@@ -4,6 +4,6 @@
 
 WordPress theme for experimenting with Gutenberg blocks
 
-Creating new blocks from scratch using JavaScript
-Editing existing blocks using add_theme_support()
-Integrating Advanced Custom Fields into Gutenberg block editor
+- Creating new blocks from scratch using JavaScript
+- Editing existing blocks using add_theme_support()
+- Integrating Advanced Custom Fields into Gutenberg block editor
