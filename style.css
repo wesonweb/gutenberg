@@ -1,0 +1,1158 @@
+/*
+Theme Name: Gutenberg
+Theme URI: 
+Author: Wes
+Description: for Gutenberg experimentation
+Version: 1.0.0
+License: GNU General Public License v2 or later
+Text Domain: vanilla-theme
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Colors
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+  ## Galleries
+# Tabs
+--------------------------------------------------------------*/
+/* custom theme colors */
+:root {
+  --white: #fff;
+  --neutral: #f0efef;
+  --body-text: #404040;
+  --body-text-light: #666666;
+  --masthead: #f5f5f5;
+  --open-menu: var(--menu-toggle);
+  --submenu-link-background: var(--menu-toggle);
+  --footer-bg: var(--neutral);
+  --small-screen-nav-links: #ffffff;
+  --links: #b22222;
+  --links-hover: #b22222;
+  --blog-bg: #f5f5f5;
+  --post-nav-bg: var(--neutral);
+  --menu-toggle: #dc143c;
+  --submenu-icon: #483d8b;
+  --form-input-color: #111;
+  --form-button-bg: var(--links);
+  --cat-links-bg: var(--neutral);
+  --tag-links-bg: var(--neutral);
+  --comment-bg: var(--neutral);
+
+  /* font sizes - consider using clamp 
+      eg --fs-xl: 3.5rem, 12vw+1rem, 12vw);
+  */
+  --fs-400: 1rem;
+  --fs-600: 2rem;
+  --fs-xl: 5rem;
+}
+
+@media (min-width: 40em) {
+  :root {
+    --fs-400: 1.125rem;
+    --fs-600: 3rem;
+    --fs-xl: 7rem;
+  }
+}
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+  color: var(--body-text);
+  font-family: Open Sans, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--offwhite);
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  clear: both;
+}
+
+h1 {
+  font-size: var(--fs-xl);
+  margin: 0 0 1.5rem;
+}
+
+h2 {
+  font-size: var(--fs-600);
+}
+
+h3 {
+  /* font-size: 1.25rem; */
+}
+
+p {
+  font-size: var(--fs-400);
+  margin-bottom: 1.5em;
+}
+
+dfn,
+cite,
+em,
+i {
+  font-style: italic;
+}
+
+blockquote {
+  font-size: var(--fs-600);
+  margin: 0 1.5em;
+}
+
+address {
+  margin: 0 0 1.5em;
+}
+
+pre {
+  background: #eee;
+  font-family: "Courier 10 Pitch", Courier, monospace;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1.6em;
+}
+
+code,
+kbd,
+tt,
+var {
+  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+  font-size: var(--fs-400);
+  font-size: 0.9375rem;
+}
+
+abbr,
+acronym {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+
+mark,
+ins {
+  background: #fff9c0;
+  text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+  box-sizing: inherit;
+}
+
+body {
+  background: #fff;
+  /* Fallback for when there is no custom background color defined. */
+}
+
+.container {
+  width: 100%;
+  max-width: 80rem;
+  margin: auto;
+  padding: 10px;
+}
+
+article {
+  max-width: 48rem;
+  margin: auto;
+}
+
+header#masthead {
+  background-color: var(--masthead);
+}
+.site-branding {
+  display: none;
+}
+
+.site-footer {
+  background-color: var(--footer-bg);
+}
+hr {
+  background-color: #404040;
+  border: 0;
+  height: 1px;
+  margin-bottom: 1.5em;
+}
+
+ul,
+ol {
+  margin: 0 0 1.5em 1em;
+  padding-left: 0;
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 1.5em 1.5em;
+}
+
+img {
+  height: auto;
+  /* Make sure images are scaled correctly. */
+  max-width: 100%;
+  /* Adhere to container width. */
+}
+
+figure {
+  margin: 1em 0;
+  /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+table {
+  margin: 0 0 1.5em;
+  width: 100%;
+}
+
+/* [-- HEADER --] */
+
+/* [-- MAIN BODY --] */
+
+/* [-- FOOTER --] */
+.copyright {
+  color: var(--body-text);
+}
+/* [-- SIDEBARS --] */
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border: 1px solid;
+  border-color: #ccc #ccc #bbb;
+  border-radius: 3px;
+  background: #e6e6e6;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+  font-size: 1rem;
+  line-height: 1.2;
+  padding: 0.75em 1em 0.55em;
+}
+button {
+  background-color: #fff;
+}
+/* remove pill shaped buttons on Webkit browsers */
+input[type="search"],
+input[type="button"] {
+  -webkit-appearance: none;
+}
+
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+  background-color: var(--form-button-bg);
+  color: var(--white);
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  border-color: #ccc #bbb #aaa;
+}
+
+button:active,
+button:focus,
+input[type="button"]:active,
+input[type="button"]:focus,
+input[type="reset"]:active,
+input[type="reset"]:focus,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+  border-color: #aaa #bbb #bbb;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+  color: var(--form-input);
+}
+
+select {
+  border: 1px solid #ccc;
+}
+
+textarea {
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Links
+--------------------------------------------------------------*/
+a {
+  color: var(--links);
+  text-decoration: none;
+  transition: all ease 0.4s;
+  display: inline-block;
+  position: relative;
+  border-bottom: 2px solid var(--links);
+}
+
+/* a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--links-hover);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+} */
+
+a:hover,
+a:focus,
+a:active {
+  color: var(--links-hover);
+}
+
+a:hover:after {
+  /* transform: scaleX(1);
+  transform-origin: bottom left; */
+}
+
+a:visited {
+  color: var(--links);
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+a:hover,
+a:active {
+  outline: 0;
+}
+
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+#masthead {
+  position: relative;
+}
+
+img.logo {
+  display: block;
+  margin: 0 auto;
+}
+
+#logo-link {
+  margin: 0;
+  text-align: center;
+  flex-basis: 200px;
+  text-decoration: none;
+  border-bottom: none;
+}
+/* container with logo and nav */
+.logo-nav {
+  height: 10vh;
+}
+/* navigation container */
+.main-navigation {
+  width: 100%;
+  margin: auto;
+  display: none;
+}
+.main-navigation.toggled {
+  display: block;
+  transition: transform 0.45s ease-in;
+  height: 90vh;
+  background: var(--open-menu);
+}
+
+/* ul containing the nav elements */
+/* hide on small screens */
+.nav-menu {
+  max-width: 64rem;
+  list-style: none;
+  margin: auto;
+  padding-left: 0;
+}
+
+/* nav links */
+.nav-menu a {
+  font-size: 1.1rem;
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  margin-left: 20px;
+  border-bottom: none;
+  color: var(--small-screen-nav-links);
+}
+/* 
+  =============
+    submenu 
+  ==============
+*/
+.submenu {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 100%;
+  left: -999em;
+  z-index: 99999;
+  background: var(--submenu-link-background);
+  list-style: none;
+}
+
+/*add indicator for submenus*/
+li.has-children > a:after {
+  color: var(--submenu-icon);
+  content: " ▼";
+  font-size: 12px;
+  margin-left: 4px;
+  vertical-align: 1px;
+  color: var(--nav-links);
+}
+
+/* for when submenu has another level */
+/* .menu li li.menu-item-has-children > a:after {
+  color: var(--submenu-icon);
+  content: " ►";
+  font-size: 12px;
+  vertical-align: 1px;
+} */
+
+.main-navigation ul ul ul {
+  left: -999em;
+  top: 0;
+}
+
+.main-navigation ul ul li:hover > ul,
+.main-navigation ul ul li.focus > ul {
+  left: 100%;
+}
+
+/* submenu links */
+li.has-children:hover ul.submenu {
+  /* make the submenu centered in its container*/
+  margin: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+}
+/* make submenu links centered */
+.submenu a {
+  min-width: 200px;
+  text-align: center;
+  color: var(--links);
+}
+
+/* remove margin left from links in submenu */
+.submenu li.active a {
+  margin-left: 0;
+}
+
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.focus > ul {
+  left: auto;
+}
+
+.main-navigation li {
+  position: relative;
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+  display: block;
+}
+.menu-toggle {
+  background-color: transparent;
+}
+/* hamburger menu */
+.menu-toggle div {
+  width: 20px;
+  height: 2px;
+  background-color: var(--links);
+  margin: 5px;
+  transition: all 0.75s;
+}
+/* when clicked (toggled) change appearance to X */
+.menu-toggle[aria-expanded="true"] .line-one {
+  transform: rotateZ(-405deg) translate(-4px, 6px);
+}
+.menu-toggle[aria-expanded="true"] .line-two {
+  opacity: 0;
+}
+.menu-toggle[aria-expanded="true"] .line-three {
+  transform: rotateZ(405deg) translate(-3px, -6px);
+}
+
+.logo-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  height: auto;
+}
+button.menu-toggle {
+  -webkit-appearance: none;
+  appearance: none;
+  color: var(--menu-toggle);
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+}
+button[aria-expanded="true"] {
+  /* top: 0; */
+}
+
+#nav-menu[aria-expanded="true"] {
+  transform: translateY(0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  /* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); */
+}
+#nav-menu[aria-expanded="true"] a {
+  margin: 1rem 0;
+}
+
+@media screen and (min-width: 37.5em) {
+  .menu-toggle,
+  .menu-toggle div {
+    display: none;
+  }
+  .main-navigation {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    align-content: flex-end;
+  }
+  .nav-menu a {
+    color: var(--links);
+  }
+  .navigation-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  clip-path: none;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+  outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5em;
+}
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+.clear:before,
+.clear:after,
+.entry-content:before,
+.entry-content:after,
+.comment-content:before,
+.comment-content:after,
+.site-header:before,
+.site-header:after,
+.site-content:before,
+.site-content:after,
+.site-footer:before,
+.site-footer:after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+}
+
+.clear:after,
+.entry-content:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after {
+  clear: both;
+}
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.widget {
+  margin: 0 0 1.5em;
+  /* Make sure select elements fit in widgets. */
+}
+
+.widget select {
+  max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+.sticky {
+  display: block;
+}
+
+.post,
+.page {
+  margin: 0 0 1.5em;
+}
+
+.updated:not(.published) {
+  display: none;
+}
+
+/* [--- Blog custom landing page --- */
+article.blog-summary {
+  margin: 1rem auto 2rem;
+  padding: 1rem;
+  background-color: var(--blog-bg);
+}
+
+/* [--- single blog template-part styling | category & taxonomy link styling---] */
+
+.single-blog h1 {
+  margin: 1.5rem 0 1rem;
+}
+
+/* meta info container */
+.meta-info {
+  margin: 0;
+}
+
+/* author and date info */
+span.publish-date,
+span.author {
+  vertical-align: middle;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--body-text-light);
+}
+
+/* add margin to right of fontawesome icon */
+.fas,
+.far {
+  margin-right: 7px;
+  color: var(--body-text-light);
+}
+
+@media (min-width: 600px) {
+  span.publish-date,
+  span.author {
+    font-size: 1.05rem;
+  }
+}
+
+/* post tags and category styling */
+.tag-container {
+  background-color: var(--white);
+  padding: 10px;
+}
+
+.cat-links a,
+.tags-links a {
+  font-size: 1rem;
+  border-bottom: none;
+}
+
+.cat-links a {
+  padding: 10px;
+  background-color: var(--neutral);
+  color: var(--links);
+}
+
+.tag-link {
+  display: inline-block;
+  margin: 10px;
+}
+
+.tags-links a {
+  padding: 10px;
+  background-color: var(--tag-links-bg);
+  color: var(--links);
+}
+
+/* [--- POST NAVIGATION ---] */
+.post-navigation {
+  background-color: var(--post-nav-bg);
+}
+
+.nav-links {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.nav-previous,
+.nav-next {
+  flex-basis: 100px;
+  flex-grow: 1;
+  align-self: stretch;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.nav-next {
+  text-align: right;
+}
+
+.nav-previous {
+  text-align: left;
+}
+
+.nav-previous a,
+.nav-next a {
+  border-bottom: none;
+  color: var(--links);
+  padding: 20px;
+}
+
+.nav-previous a:before {
+  content: "←";
+  padding-right: 5px;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.nav-next a:after {
+  content: "→";
+  padding-left: 5px;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-weight: 700;
+}
+
+/* post navigation grows to fit width of container to allow for long post titles */
+@media (min-width: 600px) {
+  .nav-previous,
+  .nav-next {
+    flex-basis: 200px;
+    flex-grow: 1;
+    border: 2px solid var(--masthead);
+    font-size: 1rem;
+  }
+}
+
+/* END CUSTOM CONTENT-BLOG STYLING */
+
+.page-header,
+.page-content,
+.entry-content,
+.entry-summary,
+.entry-header,
+.entry-footer {
+  max-width: 64em;
+  margin: 1.5em auto 0;
+}
+
+.entry-meta {
+  margin: 1.5em auto;
+}
+
+.page-links {
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
+  max-width: 64em;
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous {
+  float: left;
+  width: 50%;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+
+.comments-area {
+  max-width: 64em;
+  margin: auto;
+}
+.comment-content a {
+  word-wrap: break-word;
+}
+
+.bypostauthor {
+  display: block;
+}
+/* add margin to right of fontawesome icon */
+.comments i {
+  margin-right: 5px;
+}
+
+/* adds some marging between comment replies */
+.comment-list li {
+  margin: 2rem 0;
+  padding: 10px;
+  background-color: var(--comment-bg);
+}
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation,
+.infinite-scroll.neverending .site-footer {
+  /* Theme Footer (when set to scrolling) */
+  display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+  display: block;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object,
+video {
+  max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+  display: inline-block;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+  margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+  margin-bottom: 1.5em;
+}
+
+.gallery-item {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+  max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+  max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+  max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+  max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11%;
+}
+
+.gallery-caption {
+  display: block;
+}
+
+/* tabbed content */
+.tabs__sidebar {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  background: rgb(255, 250, 250);
+}
+
+.tabs__button {
+  display: block;
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+  background: #fff;
+  margin: 0;
+}
+
+.tabs__button.active {
+  background: #fafafa;
+}
+
+.tabs__button p {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+button.tabs__button--active {
+  border-top: 4px solid #ccc;
+}
+.tabs__button--active,
+.tabs__button--active p {
+  display: block;
+  font-weight: 700;
+  background: #fafafa;
+  color: #ccc;
+}
+
+.tabs__content {
+  font-size: 0.85rem;
+  /* display: none; */
+  margin: 0;
+  padding: 0;
+}
+
+.tabs__button[aria-selected="false"] {
+  border-bottom: 4px solid #ccc;
+}
+button.tabs__button[aria-selected="true"] {
+  display: block;
+  border-color: #ccc;
+  border-top: 4px solid;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-bottom: none;
+}
+
+.tabs__content[aria-hidden="true"] {
+  display: none;
+}
+
+.tabs__content[aria-hidden="false"] {
+  display: block;
+}
+
+.tabs__content > :first-child {
+  margin-top: 0;
+}
+.tabs__content--active {
+  display: block;
+  background: #fafafa;
+  padding: 1rem;
+  /* box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2); */
+}
+
+@media (min-width: 700px) {
+  .tabs__sidebar {
+    /* flex-direction: row; */
+  }
+  .tabs__button {
+    font-size: 1.2rem;
+  }
+  .tabs__button p {
+    font-size: 1.2rem;
+  }
+}
